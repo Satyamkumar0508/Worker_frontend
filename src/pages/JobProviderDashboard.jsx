@@ -23,7 +23,7 @@ const JobProviderDashboard = () => {
         return
       }
 
-      const response = await fetch("http://localhost:8000/jobs/provider", {
+      const response = await fetch("https://worker-backend-7fyo.onrender.com/jobs/provider", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
