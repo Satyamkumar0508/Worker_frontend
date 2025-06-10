@@ -29,7 +29,7 @@ export const JobProvider = ({ children }) => {
       })
 
       console.log("Fetching jobs with filters:", filters)
-      const response = await axios.get(`http://localhost:8000/jobs?${queryParams.toString()}`, {
+      const response = await axios.get(`https://worker-backend-7fyo.onrender.com/jobs?${queryParams.toString()}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -57,7 +57,7 @@ export const JobProvider = ({ children }) => {
       }
 
       console.log(`Fetching job details for ID: ${jobId}`)
-      const response = await axios.get(`http://localhost:8000/jobs/${jobId}`, {
+      const response = await axios.get(`https://worker-backend-7fyo.onrender.com/jobs/${jobId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -84,7 +84,7 @@ export const JobProvider = ({ children }) => {
       if (!token) return []
 
       console.log("Fetching provider jobs...")
-      const response = await axios.get("http://localhost:8000/jobs/provider", {
+      const response = await axios.get("https://worker-backend-7fyo.onrender.com/jobs/provider", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -109,7 +109,7 @@ export const JobProvider = ({ children }) => {
       }
 
       console.log(`Fetching applications for job: ${jobId}`)
-      const response = await axios.get(`http://localhost:8000/applications/job/${jobId}`, {
+      const response = await axios.get(`https://worker-backend-7fyo.onrender.com/applications/job/${jobId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -129,7 +129,7 @@ export const JobProvider = ({ children }) => {
       if (!token) return []
 
       console.log("Fetching seeker applications...")
-      const response = await axios.get("http://localhost:8000/applications/seeker", {
+      const response = await axios.get("https://worker-backend-7fyo.onrender.com/applications/seeker", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -153,7 +153,7 @@ export const JobProvider = ({ children }) => {
         console.log(`Applying for job: ${jobId}`)
 
         // First check if user has already applied
-        const existingApplications = await axios.get("http://localhost:8000/applications/seeker", {
+        const existingApplications = await axios.get("https://worker-backend-7fyo.onrender.com/applications/seeker", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -166,7 +166,7 @@ export const JobProvider = ({ children }) => {
         }
 
         const response = await axios.post(
-          "http://localhost:8000/applications",
+          "https://worker-backend-7fyo.onrender.com/applications",
           {
             jobId,
             seekerId: currentUser.id,
@@ -209,7 +209,7 @@ export const JobProvider = ({ children }) => {
       if (!token) return null
 
       console.log("Creating job:", jobData)
-      const response = await axios.post("http://localhost:8000/jobs", jobData, {
+      const response = await axios.post("https://worker-backend-7fyo.onrender.com/jobs", jobData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -235,7 +235,7 @@ export const JobProvider = ({ children }) => {
         console.log(`Selecting applicant with ID: ${applicationId}`)
 
         const response = await axios.put(
-          `http://localhost:8000/applications/${applicationId}/select`,
+          `https://worker-backend-7fyo.onrender.com/applications/${applicationId}/select`,
           {},
           {
             headers: {
@@ -271,7 +271,7 @@ export const JobProvider = ({ children }) => {
 
         console.log(`Completing job: ${jobId}`)
         const response = await axios.put(
-          `http://localhost:8000/jobs/${jobId}/complete`,
+          `https://worker-backend-7fyo.onrender.com/jobs/${jobId}/complete`,
           { rating, feedback },
           {
             headers: {
