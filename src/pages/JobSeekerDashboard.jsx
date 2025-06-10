@@ -28,11 +28,11 @@ const JobSeekerDashboard = () => {
 
         if (viewMode === "available") {
           // For "All Jobs" - use the correct endpoint and filtering
-          let url = "http://localhost:8000/jobs"
+          let url = "https://worker-backend-7fyo.onrender.com/jobs"
 
           if (searchQuery.trim()) {
             // Use search endpoint with query parameter
-            url = `http://localhost:8000/jobs/search?q=${encodeURIComponent(searchQuery.trim())}`
+            url = `https://worker-backend-7fyo.onrender.com/jobs/search?q=${encodeURIComponent(searchQuery.trim())}`
             console.log("🔍 Searching All Jobs with URL:", url)
           } else {
             // When no search query, get all open jobs
@@ -60,7 +60,7 @@ const JobSeekerDashboard = () => {
           console.log(`🔍 Filtered to ${jobsData.length} available jobs`)
         } else if (viewMode === "matching") {
           // For matching jobs, apply search filter after getting matches
-          const response = await fetch("http://localhost:8000/jobs/matching", {
+          const response = await fetch("https://worker-backend-7fyo.onrender.com/jobs/matching", {
             headers: { Authorization: `Bearer ${token}` },
           })
 
@@ -85,7 +85,7 @@ const JobSeekerDashboard = () => {
           }
         } else {
           // Fetch applications
-          const response = await fetch("http://localhost:8000/applications/seeker", {
+          const response = await fetch("https://worker-backend-7fyo.onrender.com/applications/seeker", {
             headers: { Authorization: `Bearer ${token}` },
           })
 
@@ -97,7 +97,7 @@ const JobSeekerDashboard = () => {
           setApplications(applicationsData || [])
 
           // Get job details for each application
-          const jobsResponse = await fetch("http://localhost:8000/jobs", {
+          const jobsResponse = await fetch("https://worker-backend-7fyo.onrender.com/jobs", {
             headers: { Authorization: `Bearer ${token}` },
           })
 
