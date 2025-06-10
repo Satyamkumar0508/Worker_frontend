@@ -205,7 +205,7 @@ const Profile = () => {
       const token = localStorage.getItem("token")
       if (!token) return 0
 
-      const response = await axios.get("http://localhost:8000/applications", {
+      const response = await axios.get("https://worker-backend-7fyo.onrender.com/applications", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -238,7 +238,7 @@ const Profile = () => {
             }
 
             console.log("📊 Fetching provider jobs from API...")
-            const response = await axios.get("http://localhost:8000/jobs/provider", {
+            const response = await axios.get("https://worker-backend-7fyo.onrender.com/jobs/provider", {
               headers: {
                 Authorization: `Bearer ${token}`,
               },
