@@ -5,7 +5,7 @@ import { createContext, useState, useContext, useEffect } from "react"
 import axios from "axios"
 
 // Use local backend URL for development
-const API_URL = "http://localhost:8000" // Local backend URL
+const API_URL = "https://worker-backend-7fyo.onrender.com" // Local backend URL
 
 const AuthContext = createContext()
 
