@@ -36,7 +36,7 @@ export const NotificationProvider = ({ children }) => {
         return
       }
 
-      const response = await axios.get("http://localhost:8000/notifications", {
+      const response = await axios.get("https://worker-backend-7fyo.onrender.com/notifications", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -69,7 +69,7 @@ export const NotificationProvider = ({ children }) => {
       if (!token) return
 
       await axios.put(
-        `http://localhost:8000/notifications/${notificationId}/read`,
+        `https://worker-backend-7fyo.onrender.com/notifications/${notificationId}/read`,
         {},
         {
           headers: {
@@ -98,7 +98,7 @@ export const NotificationProvider = ({ children }) => {
       if (!token) return
 
       await axios.put(
-        "http://localhost:8000/notifications/read-all",
+        "https://worker-backend-7fyo.onrender.com/notifications/read-all",
         {},
         {
           headers: {
