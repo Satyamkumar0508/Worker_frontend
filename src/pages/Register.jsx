@@ -166,7 +166,7 @@ const Register = () => {
     setError("")
 
     try {
-      const response = await fetch("http://localhost:8000/register/send-otp", {
+      const response = await fetch("https://worker-backend-7fyo.onrender.com/register/send-otp", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -206,7 +206,7 @@ const Register = () => {
 
     // Optional: Verify OTP with backend without consuming it
     try {
-      const response = await fetch("http://localhost:8000/verify-otp-registration", {
+      const response = await fetch("https://worker-backend-7fyo.onrender.com/verify-otp-registration", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -327,7 +327,7 @@ const Register = () => {
 
     // Check connection before submitting
     if (connectionStatus === false) {
-      setError("Cannot connect to server. Please make sure the backend is running on http://localhost:8000")
+      setError("Cannot connect to server. Please make sure the backend is running on https://worker-backend-7fyo.onrender.com")
       return
     }
 
@@ -346,7 +346,7 @@ const Register = () => {
 
       console.log("📤 Submitting registration data:", userData)
 
-      const response = await fetch("http://localhost:8000/register", {
+      const response = await fetch("https://worker-backend-7fyo.onrender.com/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -404,9 +404,9 @@ const Register = () => {
   const getStatusMessage = () => {
     switch (backendStatus) {
       case "connected":
-        return "✅ Connected to backend server (http://localhost:8000)"
+        return "✅ Connected to backend server (https://worker-backend-7fyo.onrender.com)"
       case "disconnected":
-        return "❌ Cannot connect to backend server. Please start the server on http://localhost:8000"
+        return "❌ Cannot connect to backend server. Please start the server on https://worker-backend-7fyo.onrender.com"
       case "checking":
         return "🔍 Checking backend connection..."
       default:
