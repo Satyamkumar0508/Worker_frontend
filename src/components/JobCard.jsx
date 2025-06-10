@@ -22,7 +22,7 @@ const JobCard = ({ job, showApply = true, showApplications = false }) => {
         if (!token) return
 
         // Always update the applicant count for the latest data
-        const jobResponse = await fetch(`http://localhost:8000/jobs/${job.id}`, {
+        const jobResponse = await fetch(`https://worker-backend-7fyo.onrender.com/jobs/${job.id}`, {
           headers: { Authorization: `Bearer ${token}` },
         })
 
@@ -34,7 +34,7 @@ const JobCard = ({ job, showApply = true, showApplications = false }) => {
         // Check if seeker has applied - use seeker applications endpoint for better reliability
         if (isSeeker && currentUser) {
           try {
-            const applicationsResponse = await fetch("http://localhost:8000/applications/seeker", {
+            const applicationsResponse = await fetch("https://worker-backend-7fyo.onrender.com/applications/seeker", {
               headers: { Authorization: `Bearer ${token}` },
             })
 
