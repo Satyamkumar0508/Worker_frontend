@@ -104,11 +104,11 @@ const AdminDashboard = () => {
       // Fetch all data in parallel
       const [statsResponse, usersResponse, jobsResponse, notificationsResponse, notificationStatsResponse] =
         await Promise.all([
-          fetch("http://localhost:8000/admin/stats", { headers }),
-          fetch("http://localhost:8000/admin/users", { headers }),
-          fetch("http://localhost:8000/admin/jobs", { headers }),
-          fetch("http://localhost:8000/admin/notifications", { headers }),
-          fetch("http://localhost:8000/admin/notifications/stats", { headers }),
+          fetch("https://worker-backend-7fyo.onrender.com/admin/stats", { headers }),
+          fetch("https://worker-backend-7fyo.onrender.com/admin/users", { headers }),
+          fetch("https://worker-backend-7fyo.onrender.com/admin/jobs", { headers }),
+          fetch("https://worker-backend-7fyo.onrender.com/admin/notifications", { headers }),
+          fetch("https://worker-backend-7fyo.onrender.com/admin/notifications/stats", { headers }),
         ])
 
       // Check if all requests were successful
@@ -156,8 +156,8 @@ const AdminDashboard = () => {
       }
 
       const [notificationsResponse, notificationStatsResponse] = await Promise.all([
-        fetch("http://localhost:8000/admin/notifications", { headers }),
-        fetch("http://localhost:8000/admin/notifications/stats", { headers }),
+        fetch("https://worker-backend-7fyo.onrender.com/admin/notifications", { headers }),
+        fetch("https://worker-backend-7fyo.onrender.com/admin/notifications/stats", { headers }),
       ])
 
       if (notificationsResponse.ok && notificationStatsResponse.ok) {
@@ -232,7 +232,7 @@ const AdminDashboard = () => {
       setTabLoading(true)
       const token = localStorage.getItem("adminToken") || localStorage.getItem("token")
 
-      const response = await fetch(`http://localhost:8000/admin/notifications/${notificationId}`, {
+      const response = await fetch(`https://worker-backend-7fyo.onrender.com/admin/notifications/${notificationId}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -261,7 +261,7 @@ const AdminDashboard = () => {
       setTabLoading(true)
       const token = localStorage.getItem("adminToken") || localStorage.getItem("token")
 
-      const response = await fetch("http://localhost:8000/admin/notifications/mark-all-read", {
+      const response = await fetch("https://worker-backend-7fyo.onrender.com/admin/notifications/mark-all-read", {
         method: "PUT",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -344,7 +344,7 @@ const AdminDashboard = () => {
       const token = localStorage.getItem("adminToken") || localStorage.getItem("token")
 
       // Fetch detailed user information
-      const response = await fetch(`http://localhost:8000/admin/users/${userId}`, {
+      const response = await fetch(`https://worker-backend-7fyo.onrender.com/admin/users/${userId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
@@ -381,13 +381,13 @@ const AdminDashboard = () => {
 
       // Fetch detailed job information including applications
       const [jobResponse, applicationsResponse] = await Promise.all([
-        fetch(`http://localhost:8000/jobs/${jobId}`, {
+        fetch(`https://worker-backend-7fyo.onrender.com/jobs/${jobId}`, {
           headers: {
             Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
           },
         }),
-        fetch(`http://localhost:8000/applications/job/${jobId}`, {
+        fetch(`https://worker-backend-7fyo.onrender.com/applications/job/${jobId}`, {
           headers: {
             Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
@@ -451,8 +451,8 @@ const AdminDashboard = () => {
 
       const endpoint =
         itemToDelete.type === "user"
-          ? `http://localhost:8000/admin/users/${itemToDelete.id}`
-          : `http://localhost:8000/admin/jobs/${itemToDelete.id}`
+          ? `https://worker-backend-7fyo.onrender.com/admin/users/${itemToDelete.id}`
+          : `https://worker-backend-7fyo.onrender.com/admin/jobs/${itemToDelete.id}`
 
       const response = await fetch(endpoint, {
         method: "DELETE",
